@@ -2,18 +2,19 @@
     <div class="min-h-screen flex flex-col items-center">
         <!-- Header Section -->
         <section class="bg-gradient-to-r from-[#2C2E30] to-[#0E0E0E] w-full flex justify-center">
-            <div class="container mx-4 sm:mx-0">
+            <div class="container w-[calc(100%-32px)] mx-4 sm:mx-0">
                 <Logo />
                 <SearchBar />
             </div>
         </section>
 
         <!-- Characters Section -->
-        <section class="bg-dark w-full flex flex-col items-center min-h-screen pb-6 pt-8 sm:pt-14">
+        <section
+            class="bg-dark w-full flex flex-col items-center min-h-[calc(100vh-146px)] py-10 sm:pt-14">
             <div v-if="loading" class="mt-6 text-white">
                 <Icon icon="svg-spinners:3-dots-scale" class="text-[60px] text-light" />
             </div>
-            <div v-else-if="characters.length" class="grid md:grid-cols-4 gap-6 container mx-4 sm:mx-0">
+            <div v-else-if="characters.length" class="grid md:grid-cols-4 gap-6 container w-[calc(100%-32px)] mx-4 sm:mx-0">
                 <Card v-for="character in characters" :key="character.id" :image="getCharacterImage(character)"
                     :name="character?.name" :route="`/character/${character.id}`" />
             </div>
