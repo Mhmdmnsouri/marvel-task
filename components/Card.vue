@@ -1,7 +1,7 @@
 <template>
     <nuxt-link :to="route"
-        class="group rounded-xl border border-gray p-md hover:shadow-[0_0px_20px_rgba(255,255,255,0.2)] hover:border-light transition-all">
-        <img class="rounded-md mb-3" :src="image" :alt="name" />
+        class="group rounded-xl border flex justify-between flex-col border-gray p-md hover:shadow-[0_0px_20px_rgba(255,255,255,0.2)] h-full hover:border-light transition-all">
+        <img class="rounded-md mb-3 w-full h-full" :src="image" :alt="name" />
         <div class="flex items-center">
             <h4 class="text-md text-white">
                 {{ name }}
