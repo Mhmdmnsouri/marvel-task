@@ -15,6 +15,10 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "Marvel",
+      meta: [
+        { name: "description", content: "Marvel Web Aplication." },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+      ],
     },
   },
 
