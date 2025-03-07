@@ -10,15 +10,15 @@ export default defineEventHandler(async (event) => {
 
   const ts = Date.now();
   const hash = md5(ts + privateKey + publicKey).toString();
+  const { limit = 20, offset = 0 } = getQuery(event);
 
   const queryParam = q ? `&nameStartsWith=${encodeURIComponent(q)}` : "";
 
-  const url = `${baseURL}/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}${queryParam}`;
+  const url = `${baseURL}/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}${queryParam}&limit=${limit}&offset=${offset}`;
 
   try {
     const data = await $fetch(url);
     return data;
-    
   } catch (error) {
     return {
       error: `Failed to fetch characters for query: ${q}`,
