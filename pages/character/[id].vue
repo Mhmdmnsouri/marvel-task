@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </section>
-            <section class="w-full bg-dark flex flex-col items-center py-10 min-h-[calc(100vh-382px)]">
+            <section class="w-full bg-dark flex flex-col items-center py-10 min-h-[calc(100vh-384px)]">
                 <div v-if="!comicsLimited.length && !seriesLimited.length" class="p-4 text-white text-center">
                     No comics or series available at this time :(
                 </div>

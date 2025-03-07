@@ -10,7 +10,7 @@
         </section>
 
         <section
-            class="bg-dark w-full flex flex-col items-center min-h-[calc(100vh-146px)] py-10 sm:pt-14 relative z-10">
+            class="bg-dark w-full flex flex-col items-center min-h-[calc(100vh-148px)] py-10 sm:pt-14 relative z-10">
             <div v-if="loading" class="mt-6 text-white">
                 <Icon icon="svg-spinners:3-dots-scale" class="text-[60px] text-light" />
             </div>
