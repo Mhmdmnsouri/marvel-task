@@ -2,6 +2,15 @@
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+## Docker 
+
+Building the Docker Image
+
+```bash
+# Run the following command in your project root:
+docker build -t marvel-task .
+```
+
 ## Setup
 
 Make sure to install dependencies:
