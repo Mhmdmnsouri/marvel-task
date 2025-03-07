@@ -25,7 +25,6 @@
                     {{ message }}
                 </p>
             </div>
-
             <Pagination v-if="!loading && totalPages > 1" :currentPage="currentPage" :totalPages="totalPages"
                 @update:page="updatePage" />
         </section>
@@ -43,7 +42,6 @@ const currentPage = ref(1);
 const totalPages = ref(1);
 const lastQuery = ref('');
 
-// Function to fetch characters. If a search query is provided
 const fetchCharacters = async (query = '', page = 1) => {
     loading.value = true;
     message.value = "";
@@ -53,11 +51,13 @@ const fetchCharacters = async (query = '', page = 1) => {
         const endpoint = query
             ? `/api/characters/search?q=${encodeURIComponent(query)}&limit=${limit}&offset=${offset}`
             : `/api/characters?limit=${limit}&offset=${offset}`;
+
         const data = await $fetch(endpoint);
+
         characters.value = data?.data?.results || [];
         const totalResults = data?.data?.total || 0;
         totalPages.value = Math.ceil(totalResults / limit);
-        console.log("Requesting:", endpoint);
+
         if (query && characters.value.length === 0) {
             message.value = "Oops! No character found!";
         }
@@ -71,7 +71,6 @@ const fetchCharacters = async (query = '', page = 1) => {
     }
 };
 
-// Function to build the character image URL.
 const getCharacterImage = (character) =>
     `${character.thumbnail.path}.${character.thumbnail.extension}`;
 
