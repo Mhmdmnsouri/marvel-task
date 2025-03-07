@@ -13,10 +13,10 @@
                     <div class="w-full flex items-start pb-4 pt-8 sm:pt-12">
                         <div v-if="character"
                             class="text-white flex flex-col sm:flex-row gap-12 items-start sm:items-center pb-4 relative">
-                            <img :src="characterImage" :alt="character.name"
+                            <img :src="characterImage" :alt="character.name" loading="lazy"
                                 class="rounded-md w-[240px] h-[240px] object-cover z-10" />
                             <div class="flex flex-col gap-4">
-                                <img src="@/assets/images/red-rey.webp"
+                                <img src="@/assets/images/red-rey.webp" loading="lazy"
                                     class="absolute -left-40 top-40 sm:left-0 sm:-top-35" alt="red-ray" />
                                 <h1 class="text-2xl font-bold mb-2 z-10">{{ character.name }}</h1>
                                 <p class="text-gray-300 text-[12px] sm:text-sm z-10">
@@ -51,13 +51,13 @@
                         </div>
                     </div>
                 </div>
-
             </section>
         </template>
     </div>
 </template>
 
 <script setup>
+import { useRoute, useHead } from '#imports'
 import comicPlaceholder from '~/assets/images/comic-placeholder.webp'
 import seriesPlaceholder from '~/assets/images/series-placeholder.webp'
 
@@ -68,6 +68,20 @@ const { data, pending, error } = useAsyncData('character', () =>
 )
 
 const character = computed(() => data.value?.data?.results?.[0] || null);
+
+useHead({
+    title: computed(() =>
+        character.value?.name ? `${character.value.name} - Marvel` : 'Character Details | Marvel'
+    ),
+    meta: [
+        {
+            name: 'description',
+            content: computed(() =>
+                character.value?.description || 'Details about the Marvel character.'
+            )
+        }
+    ]
+})
 
 const comicsLimited = computed(() => {
     return character.value?.comics?.items?.slice(0, 8) || []
