@@ -1,7 +1,6 @@
 <template>
     <button
-        class="bg-red rounded-sm gap-2 flex items-center justify-center p-2 text-sm text-white cursor-pointer hover:bg-dark-red transition-colors"
-        @click="onClick">
+        class="bg-red rounded-sm gap-2 flex items-center justify-center p-2 text-sm text-white cursor-pointer hover:bg-dark-red transition-colors">
         <span :class="{ 'px-1 sm:px-0': hideLabelOnMobile }" v-if="icon">
             <Icon :icon="icon" />
         </span>
@@ -22,7 +21,5 @@ defineProps({
     },
 });
 
-const onClick = () => {
-    console.log("PrimaryBtn Clicked");
-};
+
 </script>
